@@ -1,0 +1,88 @@
+\section{Warmup: Probabilities}
+
+For the following questions, suppose $A_1, A_2, A_3, A_4$ are
+events.\\\textit{(Remember that no points will be awarded without explanations.)}
+
+\begin{enumerate}
+\item \relax[2 points] If $P(A_1) = P(A_2) = P(A_1 \mid A_2) = \frac{1}{2}$, then
+  are the events $A_1$ and $A_2$ independent? Why?
+  
+Events $A_1$ and $A_2$ are independent if 
+  
+$$
+P(A_1\mid A_2) = P(A_1)\\
+$$
+and
+$$
+P(A_2\mid A_1) = P(A_2)\\
+$$
+
+Using Bayes rule
+\begin{equation*}
+\begin{aligned}
+P(A_2\mid A_1) &= \frac{P(A_1\mid A_2)P(A_2)}{P(A_1)} \\
+&= \frac{\frac{1}{2}\times \frac{1}{2}}{\frac{1}{2}}\\
+&= \frac{1}{2}\\
+&=P(A_2)\\
+&= P(A_1 \mid A_2)\\
+&= P(A_1)
+\end{aligned}
+\end{equation*}
+  
+\item \relax[3 points] Suppose $A_1, A_2$ and $A_3$ are mutually
+  exclusive. If, for $i \in \{1,2,3\}$, we have $P(A_i) = \frac{1}{3}$
+  and $P(A_4 \mid A_i) = \frac{i}{6}$, then what is $P(A_4)$?
+  
+Using the theorem of total probability in the above case
+
+\begin{equation*}
+\begin{aligned}
+P(A_4) &= \sum_{i=1}^3 P(A_4 \mid A_i) P(A_i)\\
+&= \sum_{i=1}^3 \frac{i}{6} \times \frac{1}{3}\\
+&= \frac{1}{3} \times \left ( \frac{1}{6} + \frac{2}{6} + \frac{3}{6} \right )\\
+&= \frac{1}{3} \times \frac{6}{6}\\
+&= \frac{1}{3} 
+\end{aligned}
+\end{equation*} 
+ 
+\item \relax[3 points] Let $n$ be the number at the top when a fair
+  six-sided die is tossed. If a fair coin is tossed $n$ times, then
+  what is the probability of exactly two heads?
+
+Let $H$ be the event of getting a head, $2H$ be the event of getting exactly two heads when tossing a coin, and let $D_n$ be the event for the number at the top when a die is tossed.
+
+So the probability of exactly two heads is
+\begin{equation*}
+\begin{aligned}
+&= \sum_{n=1}^6  P(2H \mid D_n) \times P(D_n)\\
+&= \sum_{n=1}^6  P(2H \mid D_n) \times \frac{1}{6}\\
+&= \sum_{n=1}^6  {n \choose 2} \times \left( P(H) \right ) ^ 2  \times \left(1- P(H) \right ) ^ {n-2} \times \frac{1}{6}\\
+&= \frac{1}{6} \times \bigl [ 0 +  1 \times \left(\frac{1}{2} \right)^2 \times \left (\frac{1}{2}\right )^0 + 3 \times \left(\frac{1}{2} \right)^2 \times \left (\frac{1}{2}\right )^1 + 6 \times \left(\frac{1}{2} \right)^2 \times \left (\frac{1}{2}\right )^2 \\
+&+10 \times \left(\frac{1}{2} \right)^2 \times \left (\frac{1}{2}\right )^3  + 15 \times \left(\frac{1}{2} \right)^2 \times \left (\frac{1}{2}\right )^4 \bigr ]\\
+&= \frac{1}{6} \times \bigl [ 0 +  \frac{1}{4} + \frac{3}{8} + \frac{6}{16} + \frac{10}{32} + \frac{15}{64}\bigr ]\\
+&= \frac{1}{6} \times \bigl [ \frac{16+24+ 24+20+15}{64}\bigr ]\\
+&=\frac{1}{6} \times\frac{99}{64} \\
+&=\frac{33}{128}
+\end{aligned}   
+\end{equation*}  
+  
+\item \relax[4 points] Prove or disprove: If $P(A_1) = a_1$ and
+  $P(A_2) = a_2$, then $P(A_1 | A_2) \geq \frac{a_1 + a_2 -1}{a_2}$.
+\item \relax[8 points] If $A_1$ and $A_2$ are independent events, then
+  show that
+  \begin{enumerate}
+  \item $E[A_1 + A_2] = E[A_1] + E[A_2]$
+  \item $var[A_1 + A_2] = var[A_1] + var[A_2]$
+  \end{enumerate}
+
+  Here $E[\cdot]$ and $var[\cdot]$ denote the mean and variance
+  respectively.
+
+
+\end{enumerate}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "hw6"
+%%% End:

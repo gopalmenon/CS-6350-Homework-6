@@ -1,0 +1,104 @@
+\section{Naive Bayes}
+
+\newcommand{\ph}{\hat{P}}
+
+In this question, we will examine the influence of the conditional
+independence assumption that the naive Bayes model makes. For this
+question, we will use the notation $P$ to denote the true
+probabilities that generates the data and $\ph$ to denote
+probabilities that are learned from data. Assume no smoothing is done.
+
+
+
+\begin{enumerate}
+\item \relax[Part 1] Suppose we have a binary classification problem
+  where the label $y$ can either be $-1$ or $1$. In the first case,
+  consider the case where we have only one feature $x_1$ that can also
+  be either $-1$ or $1$. The generative distribution of the data is
+  $P(x_1, y) = P(y) P(x_1 \mid y)$. Note that this satisfies the
+  independence assumption of the naive Bayes model. All features are
+  conditionally independent of each other given the label -- of
+  course, there is only one feature so this statement is trivially
+  true.
+
+  Suppose we know the true distribution that generated the data as
+  follows:
+
+  \begin{itemize}
+  \item $P(y = -1) = 0.1$ and $P(y = 1) = 0.9$
+  \item $P(x_1 = -1 \mid y = -1) = 0.8$, $P(x_1 = 1 \mid y = -1) = 0.2$, $P(x_1 = 1 \mid y = 1) = 0.1$ and $P(x_1 = 1 \mid y = 1) = 0.9$.
+  \end{itemize}
+
+  \begin{enumerate}
+  \item \relax[2 points] If we have infinite data drawn from this
+    distribution and we train a naive Bayes classifier, what would the
+    values of $\ph(x_1 \mid y)$ and $\ph(y)$ be?
+  \item \relax[6 points] Use these learned values probabilities from
+    the previous question to fill up the following table:
+
+    \begin{tabular}{|c|c|c|c|}
+      \hline
+      {\bf Input $x_1$} & $\ph(x_1, y= -1)$ & $\ph(x_1, y=1)$ & {\bf Prediction: $y' = arg\max_y \ph(x_1, y)$} \\
+      \hline
+      -1                &                   &                 &                                   \\
+      1                 &                   &                 &                                   \\
+      \hline
+    \end{tabular}
+
+  \item \relax[3 points] If the probabilities learned above were used to
+    make predictions, what would the error of that classifier be? In
+    other words, what is $P(y' \ne y)$? 
+
+    Hint: To answer this, you should use the fact that
+    $P(y' \ne y) = P(y' \ne y, x_1 = -1) + P(y' \ne y, x_1 = 1)$.
+
+  \end{enumerate}
+
+\item \relax[Part 2] Now, suppose we have a binary classification
+  problem with two features $x_1, x_2$ both of which can be $-1$ or
+  $1$. However, the second feature $x_2$ is actually identical to the
+  first feature $x_1$. And we have the same true probabilities
+  $P(x_1 \mid y)$ and $P(y)$ as in Part 1 above.
+
+  \begin{enumerate}
+  \item \relax[1 point] Are $x_1$ and $x_2$ conditionally independent
+    given $y$? Prove your answer formally using the definition of
+    conditional independence.
+  \item \relax[8 points] Let $\ph(x_1 \mid y), \ph(x_2 \mid y)$ and
+    $\ph(y)$ represent the learned parameters of a naive Bayes
+    classifier that is learned on infinite data generated according to
+    the above distribution. Using these parameters, fill up the
+    following table:
+
+
+    \begin{tabular}{|c|c|c|c|c|}
+      \hline
+      $x_1$ & $x_2$ & $\ph(x_1, x_2, y= -1)$ & $\ph(x_1, x_2, y=1)$ & {\bf Prediction: $y' = arg\max_y \ph(x_1, x_2, y)$} \\
+      \hline
+      -1    & -1    &                        &                      &                                                   \\
+      -1    & 1     &                        &                      &                                                   \\
+      1     & -1    &                        &                      &                                                   \\
+      1     & 1     &                        &                      &                                                   \\
+      \hline
+    \end{tabular}
+
+  \item \relax[3 points] If the probabilities learned above were used to
+    make predictions, what would the error of that classifier be? In
+    other words, what is $P(y' \ne y)$?
+
+  \item \relax[2 points] Do you expect a logistic regression
+    classifier to have the same performance as the naive Bayes
+    classifier when the variable is duplicated? Give an intuitive
+    explanation (no more than 2 sentences) for your answer.
+
+  \end{enumerate}
+
+\end{enumerate}
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "hw6"
+%%% End:

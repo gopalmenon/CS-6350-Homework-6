@@ -1,0 +1,46 @@
+\section{Experiment}
+\label{sec:experiment}
+
+We looked maximum a posteriori learning of the logistic regression classifier in class. In particular, we showed that learning the classifier is equivalent to the following optimization problem:
+\[
+\min_{\bw} \Bigl\{\sum_{i=1}^m \log(1+ \exp(-y_i\bw^T\bx_i)) + \frac{1}{\sigma^2}\bw^T\bw\Bigr\}
+\]
+In this question, you will derive the stochastic gradient descent algorithm for the logistic
+regression classifier, and also implement it with cross-validation. 
+%Detailed instructions on cross-validation procedure can be found in homework 1, and instructions on SGD can be found in homework 5.
+
+\begin{enumerate}
+\item ~[5 points] What is the derivative of the function $g(\bw) = \log(1+ \exp(-y_i\bw^T\bx_i))$ with respect to the weight vector?
+
+
+
+
+\item ~[5 points] The inner most step in the SGD algorithm is the gradient update where we use a single example instead of the entire dataset to compute the gradient. Write down the objective where the entire dataset is composed of a single example, say $(\bx_i, y_i)$. Derive the gradient of this objective with respect to the weight vector.
+
+
+
+\item ~[10 points] Write down the pseudo code for the stochastic gradient algorithm using the gradient from previous part.
+
+
+
+\item ~[20 points] Implement your pseduo code as a training algorithm with
+  cross-validation on the $\sigma$ parameter.  This parameter
+  basically helps trade off between generalizability and model fit.  
+
+  Use the Adult data set from the UCI Machine Learning repository which you used in homework 2 to train and evaluate the learner. (For a description of the data, see homework 2.) In your writeup,
+  please report on the accuracy of your system, what value of sigma
+  you chose based on cross validation, how many epochs you chose to
+  run SGD, and a plot of the NEGATIVE log likelihood after each epoch
+  of SGD.
+
+
+
+\end{enumerate}
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "hw6"
+%%% End:
