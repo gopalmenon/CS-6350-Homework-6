@@ -72,16 +72,50 @@ So the probability of exactly two heads is
   show that
   \begin{enumerate}
   \item $E[A_1 + A_2] = E[A_1] + E[A_2]$
+
+The expected value of a random variable $X$ is defined as 
+
+\begin{equation*}
+\begin{aligned}
+E(X) = \sum_{e \in S} X(e) P(e)
+\end{aligned}
+\end{equation*} 
+
+where $e$ is an elementary event in probability space $S$.
+\end{enumerate}
+
+
+\begin{equation*}
+\begin{aligned}
+E(A_1 + A_2) &= \sum_{e \in S} \left \{A_1(e) + A_2(e) \right \} P(e)\\
+&= \sum_{e \in S} A_1(e) P(e)+ A_2(e) P(e)\\
+&= E(A_1)  + E(A_2) 
+\end{aligned}
+\end{equation*}
+
   \item $var[A_1 + A_2] = var[A_1] + var[A_2]$
+  
+The variance of a random variable $X$ is defined as 
+
+\begin{equation*}
+\begin{aligned}
+var(X) &= E((X-E(X))^2)
+\end{aligned}
+\end{equation*} 
+
+based on this definition
+
+\begin{equation*}
+\begin{aligned}
+var(A_1 + A_2) &= E((X-E(A_1 + A_2))^2)\\
+&= E((X-(E(A_1) +E( A_2))^2)
+\end{aligned}
+\end{equation*} 
+
   \end{enumerate}
 
   Here $E[\cdot]$ and $var[\cdot]$ denote the mean and variance
   respectively.
-
-
-\end{enumerate}
-
-
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "hw6"
