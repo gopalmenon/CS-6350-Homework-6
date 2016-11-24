@@ -73,7 +73,7 @@ So the probability of exactly two heads is
   \begin{enumerate}
   \item $E[A_1 + A_2] = E[A_1] + E[A_2]$
 
-The expected value of a random variable $X$ is defined as 
+The expected value (also known as the mean $\mu$) of a random variable $X$ is defined as 
 
 \begin{equation*}
 \begin{aligned}
@@ -81,7 +81,7 @@ E(X) = \sum_{e \in S} X(e) P(e)
 \end{aligned}
 \end{equation*} 
 
-where $e$ is an elementary event in probability space $S$.
+where $e$ is a single event in probability space $S$.
 \end{enumerate}
 
 
@@ -95,27 +95,92 @@ E(A_1 + A_2) &= \sum_{e \in S} \left \{A_1(e) + A_2(e) \right \} P(e)\\
 
   \item $var[A_1 + A_2] = var[A_1] + var[A_2]$
   
+  Here $E[\cdot]$ and $var[\cdot]$ denote the mean and variance
+  respectively.
+  
 The variance of a random variable $X$ is defined as 
 
 \begin{equation*}
 \begin{aligned}
-var(X) &= E((X-E(X))^2)
+var(X) &= E(\left[X-E(X)\right]^2)\\
+&= E(X^2-2XE(X) + E(X)^2)\\
+&= E(X^2) - 2E(XE(X)) + E(E(X)^2)\\
 \end{aligned}
 \end{equation*} 
 
-based on this definition
+In the above equations, I have represented $(E(X))^2$ as $E(X)^2$ in order to simplify the notation rather than use the explicit version with the extra parentheses. 
+
+Based on the definition of $E(X)$,
+
+ \begin{equation*}
+\begin{aligned}
+E(XE(X)) &= \sum_{e \in S} X(e) P(e) E(X)\\
+&= E(X)\sum_{e \in S} X(e) P(e)\\
+&= E(X)^2
+\end{aligned}
+\end{equation*} 
+
+The reason we can take $E(X)$ out of the summation above, is that it is just a number. By a similar argument, $E(E(X)^2) = E(X)^2$, since expected value of a number is that same number.
+
+Going back to the expansion of $var(X)$, 
 
 \begin{equation*}
 \begin{aligned}
-var(A_1 + A_2) &= E((X-E(A_1 + A_2))^2)\\
-&= E((X-(E(A_1) +E( A_2))^2)
+var(X) &=  E(X^2) - 2E(XE(X)) + E(E(X)^2)\\
+&= E(X^2) - 2E(X)^2 + E(X)^2\\
+&= E(X^2) - E(X)^2
+\end{aligned}
+\end{equation*} 
+
+Now we can expand $var [A_1 + A_2]$
+\begin{equation*}
+\begin{aligned}
+var [A_1 + A_2] &= E([A_1 + A_2]^2) - E(A_1 + A_2)^2\\
+&= E(A_1^2 + 2A_1A_2 + A_2^2) - (E(A_1) + E(A_2))^2\\
+&= E(A_1^2) + 2E(A_1A_2) + E(A_2^2) - (E(A_1)^2 + 2E(A_1)E(A_2) + E(A_2)^2)
+\end{aligned}
+\end{equation*} 
+
+Based on he definition of $E(X)$
+
+ \begin{equation*}
+\begin{aligned}
+E(A_1A_2) &= \sum_{e \in S} A_1(e) A_2(e) P(e) \\
+&= \sum_{x \in S, y \in S} A_1(x) A_2(y) P(A_1=x, A_2=y) 
+\end{aligned}
+\end{equation*} 
+
+Since $A_1$ and $A_2$ are independent, $P(A_1=x, A_2=y) = P(A_1=x)P(A_2=y)$. Going back to the expansion of $E(A_1A_2)$,
+
+ \begin{equation*}
+\begin{aligned}
+E(A_1A_2) &=  \sum_{x \in S, y \in S} A_1(x) A_2(y) P(A_1=x, A_2=y)\\
+&= \sum_{x \in S, y \in S} A_1(x) A_2(y) P(A_1=x) P(A_2=y)\\
+&= \sum_{x \in S} A_1(x) P(A_1=x) \sum_{y \in S} A_2(y) P(A_2=y)\\
+&= E(A_1) E(A_2)
+\end{aligned}
+\end{equation*} 
+
+
+Going back to the expansion of $var[A_1 + A_2]$,
+\begin{equation*}
+\begin{aligned}
+var [A_1 + A_2] &= E(A_1^2) + 2E(A_1A_2) + E(A_2^2) - (E(A_1)^2 + 2E(A_1)E(A_2) + E(A_2)^2)\\
+&= E(A_1^2) + 2E(A_1) E(A_2) + E(A_2^2) - (E(A_1)^2 + 2E(A_1)E(A_2) + E(A_2)^2)\\
+&= E(A_1^2) - E(A_1)^2 + E(A_2^2) - E(A_2)^2
+\end{aligned}
+\end{equation*} 
+
+Since we have already shown above that $var(X)=E(X^2) - E(X)^2$, this means that 
+
+\begin{equation*}
+\begin{aligned}
+var [A_1 + A_2] = var(A_1) + var(A_2)
 \end{aligned}
 \end{equation*} 
 
   \end{enumerate}
 
-  Here $E[\cdot]$ and $var[\cdot]$ denote the mean and variance
-  respectively.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "hw6"
