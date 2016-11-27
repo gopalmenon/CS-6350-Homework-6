@@ -26,13 +26,24 @@ probabilities that are learned from data. Assume no smoothing is done.
 
   \begin{itemize}
   \item $P(y = -1) = 0.1$ and $P(y = 1) = 0.9$
-  \item $P(x_1 = -1 \mid y = -1) = 0.8$, $P(x_1 = 1 \mid y = -1) = 0.2$, $P(x_1 = 1 \mid y = 1) = 0.1$ and $P(x_1 = 1 \mid y = 1) = 0.9$.
+  \item $P(x_1 = -1 \mid y = -1) = 0.8$, $P(x_1 = 1 \mid y = -1) = 0.2$, $P(x_1 = -1 \mid y = 1) = 0.1$ and $P(x_1 = 1 \mid y = 1) = 0.9$.
   \end{itemize}
 
   \begin{enumerate}
   \item \relax[2 points] If we have infinite data drawn from this
     distribution and we train a naive Bayes classifier, what would the
     values of $\ph(x_1 \mid y)$ and $\ph(y)$ be?
+    
+According to \textit{Hoeffdings Inequality} \cite{AMLBook}, the probability distribution of a random variable $\nu$ will be very close to its mean value $\mu$ for large samples. For a sample size of $N$, 
+
+$$
+P \left [ |\nu - \mu| > \epsilon \right ] \leq 2 e ^ {-2\epsilon^2N}
+$$
+
+for any $\epsilon > 0$.
+
+When $N$ is $\infty$, the values of $\ph(x_1 \mid y)$ and $\ph(y)$ will be the same as $P(x_1 \mid y)$ and $P(y)$.
+    
   \item \relax[6 points] Use these learned values probabilities from
     the previous question to fill up the following table:
 
@@ -40,8 +51,8 @@ probabilities that are learned from data. Assume no smoothing is done.
       \hline
       {\bf Input $x_1$} & $\ph(x_1, y= -1)$ & $\ph(x_1, y=1)$ & {\bf Prediction: $y' = arg\max_y \ph(x_1, y)$} \\
       \hline
-      -1                &                   &                 &                                   \\
-      1                 &                   &                 &                                   \\
+      -1                & 0.8                   &   0.1              &  -1                                 \\
+      1                 &  0.2                 &  0.9               &   1                                \\
       \hline
     \end{tabular}
 
@@ -51,6 +62,14 @@ probabilities that are learned from data. Assume no smoothing is done.
 
     Hint: To answer this, you should use the fact that
     $P(y' \ne y) = P(y' \ne y, x_1 = -1) + P(y' \ne y, x_1 = 1)$.
+
+\begin{equation*}
+\begin{aligned}
+P(y' \ne y) &= P(y' \ne y, x_1 = -1) + P(y' \ne y, x_1 = 1)\\
+&= 0.1+ 0.2\\
+&= 0.3
+\end{aligned}
+\end{equation*} 
 
   \end{enumerate}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  24 NOV 2016 13:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  27 NOV 2016 11:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -195,13 +195,13 @@ Overfull \hbox (3.17268pt too wide) detected at line 172
 ) (./question2.tex
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 28.
-
-Overfull \hbox (3.07176pt too wide) in paragraph at lines 39--47
+ [5]
+Overfull \hbox (3.07176pt too wide) in paragraph at lines 50--58
 [][] 
  []
 
-[5]
-Overfull \hbox (39.29382pt too wide) in paragraph at lines 74--84
+
+Overfull \hbox (39.29382pt too wide) in paragraph at lines 93--103
 [][] 
  []
 
@@ -211,16 +211,16 @@ Overfull \hbox (1.98076pt too wide) in paragraph at lines 1--1
 Bayes
  []
 
-[6]) (./experiment.tex) (./experiment-submission-guidelines.tex [7]) [8]
+[6]) (./experiment.tex [7]) (./experiment-submission-guidelines.tex) [8]
 (./hw6.aux) ) 
 Here is how much of TeX's memory you used:
- 1492 strings out of 493089
- 18938 string characters out of 6134842
- 90070 words of memory out of 5000000
- 4984 multiletter control sequences out of 15000+600000
+ 1493 strings out of 493089
+ 18947 string characters out of 6134842
+ 90073 words of memory out of 5000000
+ 4985 multiletter control sequences out of 15000+600000
  11724 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 27i,11n,32p,380b,259s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 27i,11n,32p,380b,264s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/c
@@ -239,7 +239,7 @@ texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/tex
 live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texl
 ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on hw6.pdf (8 pages, 208405 bytes).
+Output written on hw6.pdf (8 pages, 212365 bytes).
 PDF statistics:
  103 PDF objects out of 1000 (max. 8388607)
  74 compressed objects within 1 object stream
