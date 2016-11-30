@@ -14,9 +14,62 @@ Suppose each $P(x_j|y)$ is defined using a Gaussian/Normal probability density f
 \[
 f(x_j\,|\,\mu_{j,y}, \sigma) = \frac{1}{\sqrt{2\sigma^2\mu_{j,y}}}e^{-\frac{(x_j-\mu_{j,y})^2}{2\sigma^2}}
 \]
-Show that this na\"ive Bayes classifier has a linear decision boundary.\\ \textit{[Hint: Refer to the notes on the naive Bayes classifier and Linear models in the class website to see how to do this with binary features]}
+Show that this na\"ive Bayes classifier has a linear decision boundary.\\ \textit{[Hint: Refer to the notes on the naive Bayes classifier and Linear models in the class website to see how to do this with binary features]}\\
 
+The classifier will predict a label of $1$ if 
 
+\begin{equation*}
+\begin{aligned}
+P(y=1 \mid \bx) \geq P(y=0 \mid \bx)
+\end{aligned}
+\end{equation*}
+
+or equivalently if
+
+\begin{equation*}
+\begin{aligned}
+\frac{P(y=1 \mid \bx) }{ P(y=0 \mid \bx)} \geq 1\\
+\frac{P(y=1) P(\bx  \mid y=1) }{ P(y=0) P(\bx \mid y=0)} \geq 1
+\end{aligned}
+\end{equation*}
+
+Using the Na\"ive Bayes assumption
+
+\begin{equation*}
+\begin{aligned}
+\frac{P(y=1) \displaystyle \prod_{j=0}^{d} P(\bx_j  \mid y=1) }{ P(y=0) \displaystyle \prod_{j=0}^{d} P(\bx_j \mid y=0)} \geq 1
+\end{aligned}
+\end{equation*}
+
+As per the normal probability distribution assumption described above in the question, the classifier will predict a label of $1$ if,
+
+\begin{equation*}
+\begin{aligned}
+\frac{P(y=1)}{P(y=0)} \displaystyle \prod_{j=0}^{d}  \frac{ \frac{1}{\sqrt{2 \sigma^2 \mu_{1_{j,y}}}} \exp\left(\frac{-\left(x_j - \mu_{1_{j,y}}\right)^2}{2\sigma^2}\right)}{   \frac{1}{\sqrt{2 \sigma^2 \mu_{2_{j,y}}}} \exp\left(\frac{-\left(x_j - \mu_{2_{j,y}}\right)^2}{2\sigma^2}\right)} &\geq 1\\
+\frac{P(y=1)}{P(y=0)} \displaystyle \prod_{j=0}^{d} \sqrt{\frac{\mu_{2_{j,y}}}{\mu_{1_{j,y}}}} \frac{\exp\left(\frac{-\left(x_j - \mu_{1_{j,y}}\right)^2}{2\sigma^2}\right)}{\exp\left(\frac{-\left(x_j - \mu_{2_{j,y}}\right)^2}{2\sigma^2}\right)} &\geq 1\\
+\ln \left( \frac{P(y=1)}{P(y=0)}\right) + \displaystyle \sum_{j=0}^{d} \left( \ln \left( \sqrt{\frac{\mu_{2_{j,y}}}{\mu_{1_{j,y}}}}  \right) - \frac{\left( x_j - \mu_{1_{j,y}} \right)^2}{2\sigma^2} + \frac{\left( x_j - \mu_{2_{j,y}} \right)^2}{2\sigma^2} \right) &\geq 0\\
+\ln \left( \frac{P(y=1)}{P(y=0)}\right) + \displaystyle \sum_{j=0}^{d} \left( \ln \left( \sqrt{\frac{\mu_{2_{j,y}}}{\mu_{1_{j,y}}}}  \right) + \frac{-x_j^2 + 2x_j\mu_{1_{j,y}} - \mu_{1_{j,y}}^2 + x_j^2 - 2x_j\mu_{2_{j,y}} + \mu_{2_{j,y}}^2 }{2\sigma^2} \right) &\geq 0\\
+\ln \left( \frac{P(y=1)}{P(y=0)}\right) + \displaystyle \sum_{j=0}^{d} \left( \ln \left( \sqrt{\frac{\mu_{2_{j,y}}}{\mu_{1_{j,y}}}}  \right) + \frac{\mu_{2_{j,y}}^2  - \mu_{1_{j,y}}^2 + 2(\mu_{1_{j,y}} - \mu_{2_{j,y}})x_j  }{2\sigma^2} \right) &\geq 0\\
+b + \displaystyle \sum_{j=0}^{d} x_j w_j &\geq 0
+\end{aligned}
+\end{equation*}
+
+where 
+\begin{equation*}
+\begin{aligned}
+b=\ln \left( \frac{P(y=1)}{P(y=0)}\right) + \displaystyle \sum_{j=0}^{d} \left( \ln \left( \sqrt{\frac{\mu_{2_{j,y}}}{\mu_{1_{j,y}}}}  \right) + \frac{\mu_{2_{j,y}}^2  - \mu_{1_{j,y}}^2 }{2\sigma^2} \right) 
+\end{aligned}
+\end{equation*}
+
+and
+
+\begin{equation*}
+\begin{aligned}
+w_j = \displaystyle \sum_{j=0}^{d} \frac{\mu_{1_{j,y}} - \mu_{2_{j,y}}}{\sigma^2}
+\end{aligned}
+\end{equation*}
+
+This means that the classifier has a linear decision boundary.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "hw6"
