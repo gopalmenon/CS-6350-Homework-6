@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  27 NOV 2016 11:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  29 NOV 2016 20:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -188,20 +188,20 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                 on input line 59.
 
 [2] [3] [4]
-Overfull \hbox (3.17268pt too wide) detected at line 172
+Overfull \hbox (3.17268pt too wide) detected at line 214
 [] []
  []
 
-) (./question2.tex
+) (./question2.tex [5]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 28.
- [5]
+
 Overfull \hbox (3.07176pt too wide) in paragraph at lines 50--58
 [][] 
  []
 
-
-Overfull \hbox (39.29382pt too wide) in paragraph at lines 93--103
+[6]
+Overfull \hbox (39.29382pt too wide) in paragraph at lines 112--122
 [][] 
  []
 
@@ -211,13 +211,13 @@ Overfull \hbox (1.98076pt too wide) in paragraph at lines 1--1
 Bayes
  []
 
-[6]) (./experiment.tex [7]) (./experiment-submission-guidelines.tex) [8]
+[7]) (./experiment.tex) (./experiment-submission-guidelines.tex [8]) [9]
 (./hw6.aux) ) 
 Here is how much of TeX's memory you used:
- 1493 strings out of 493089
- 18947 string characters out of 6134842
- 90073 words of memory out of 5000000
- 4985 multiletter control sequences out of 15000+600000
+ 1495 strings out of 493089
+ 18969 string characters out of 6134842
+ 90089 words of memory out of 5000000
+ 4987 multiletter control sequences out of 15000+600000
  11724 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  27i,11n,32p,380b,264s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -239,10 +239,10 @@ texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/tex
 live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texl
 ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on hw6.pdf (8 pages, 212365 bytes).
+Output written on hw6.pdf (9 pages, 214108 bytes).
 PDF statistics:
- 103 PDF objects out of 1000 (max. 8388607)
- 74 compressed objects within 1 object stream
+ 106 PDF objects out of 1000 (max. 8388607)
+ 76 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

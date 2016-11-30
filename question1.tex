@@ -68,6 +68,48 @@ So the probability of exactly two heads is
   
 \item \relax[4 points] Prove or disprove: If $P(A_1) = a_1$ and
   $P(A_2) = a_2$, then $P(A_1 | A_2) \geq \frac{a_1 + a_2 -1}{a_2}$.
+  
+From the product rule of probability, we know that
+\begin{equation}
+\label{ProductRule}
+\begin{aligned}
+P(A_1 \wedge A_2) = P(A_1 \mid A_2) P(A_2)  
+\end{aligned}   
+\end{equation}  
+
+From the sum rule of probability, we know that
+\begin{equation}
+\label{SumRule}
+\begin{aligned}
+P(A_1 \vee A_2) = P(A_1) + P(A_2) - P(A_1 \wedge A_2)  
+\end{aligned}   
+\end{equation}    
+ 
+From equation \ref{ProductRule}, 
+
+\begin{equation*}
+\begin{aligned}
+P(A_1 \mid A_2) = \frac{P(A_1 \wedge A_2)}{P(A_2)}
+\end{aligned}   
+\end{equation*}  
+
+Using equation \ref{SumRule},
+
+\begin{equation*}
+\begin{aligned}
+P(A_1 \mid A_2) = \frac{P(A_1) + P(A_2) - P(A_1 \wedge A_2)}{P(A_2)}
+\end{aligned}   
+\end{equation*}  
+
+Since we know that $P(A_1 \wedge A_2) \leq 1$,
+
+\begin{equation*}
+\begin{aligned}
+P(A_1 \mid A_2) &\geq \frac{P(A_1) + P(A_2) - 1}{P(A_2)}\\
+&\geq \frac{a_1 + a_2 - 1}{a_2}
+\end{aligned}   
+\end{equation*}  
+
 \item \relax[8 points] If $A_1$ and $A_2$ are independent events, then
   show that
   \begin{enumerate}

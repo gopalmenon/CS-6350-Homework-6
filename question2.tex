@@ -83,6 +83,25 @@ P(y' \ne y) &= P(y' \ne y, x_1 = -1) + P(y' \ne y, x_1 = 1)\\
   \item \relax[1 point] Are $x_1$ and $x_2$ conditionally independent
     given $y$? Prove your answer formally using the definition of
     conditional independence.
+
+Since the features $x_1$ and $x_2$ are identical,
+    
+\begin{equation*}
+\begin{aligned}
+P(x_1,x_2 \mid y) = P(x_1 \mid y) = P(x_2 \mid y)
+\end{aligned}
+\end{equation*} 
+
+For $x_1$ and $x_2$ to be conditionally independent given $y$, the following should hold true
+
+\begin{equation*}
+\begin{aligned}
+P(x_1,x_2 \mid y) = P(x_1 \mid y) P(x_2 \mid y)
+\end{aligned}
+\end{equation*} 
+
+The only cases where the product of two probabilities is the same as the individual probabilities is when both are $0$ or when both are $1$. This means that the above two equations cannot be true for all cases and so $x_1$ and $x_2$ are not conditionally independent given $y$.
+    
   \item \relax[8 points] Let $\ph(x_1 \mid y), \ph(x_2 \mid y)$ and
     $\ph(y)$ represent the learned parameters of a naive Bayes
     classifier that is learned on infinite data generated according to
