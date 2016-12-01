@@ -12,12 +12,33 @@ regression classifier, and also implement it with cross-validation.
 \begin{enumerate}
 \item ~[5 points] What is the derivative of the function $g(\bw) = \log(1+ \exp(-y_i\bw^T\bx_i))$ with respect to the weight vector?
 
-
+\begin{equation*}
+\begin{aligned}
+\triangledown g(\bw) &= \triangledown \log(1+ \exp(-y_i\bw^T\bx_i))\\
+&= \frac{1}{1+ \exp(-y_i\bw^T\bx_i)} \exp(-y_i\bw^T\bx_i) (-y_i x_i)\\
+&= \frac{-y_i \bx_i \exp(-y_i\bw^T\bx_i)}{1+ \exp(-y_i\bw^T\bx_i)} \\
+&= \frac{-y_i \bx_i}{1+ \exp(y_i\bw^T\bx_i)}
+\end{aligned}
+\end{equation*}
 
 
 \item ~[5 points] The inner most step in the SGD algorithm is the gradient update where we use a single example instead of the entire dataset to compute the gradient. Write down the objective where the entire dataset is composed of a single example, say $(\bx_i, y_i)$. Derive the gradient of this objective with respect to the weight vector.
 
+We need to find the weight $\bw$ that minimizes the expression given above in the question. The objective when the entire dataset consists of a single example $(\bx_i, y_i)$ is 
 
+\begin{equation*}
+\begin{aligned}
+J(\bw) &= \log(1+ \exp(-y_i\bw^T\bx_i)) + \frac{1}{\sigma^2}\bw^T\bw\\
+\end{aligned}
+\end{equation*}
+
+The derivative of the first part has already been derived above. The gradient of this objective with respect to the weight vector is
+
+\begin{equation*}
+\begin{aligned}
+\triangledown J(\bw) &= \frac{-y_i \bx_i}{1+ \exp(y_i\bw^T\bx_i)} + \frac{2\bw}{\sigma^2}
+\end{aligned}
+\end{equation*}
 
 \item ~[10 points] Write down the pseudo code for the stochastic gradient algorithm using the gradient from previous part.
 
