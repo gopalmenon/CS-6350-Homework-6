@@ -12,7 +12,7 @@ Remember the na\"ive Bayes assumption we saw in class:
 \]
 Suppose each $P(x_j|y)$ is defined using a Gaussian/Normal probability density function, one for each value of $y$ and $j$. Each Gaussian distribution has mean $\mu_{j,y}$ and variance $\sigma^2$ (Note that they will all have same variance). As a reminder, the Gaussian distribution is represented by the following probability density function:
 \[
-f(x_j\,|\,\mu_{j,y}, \sigma) = \frac{1}{\sqrt{2\sigma^2\mu_{j,y}}}e^{-\frac{(x_j-\mu_{j,y})^2}{2\sigma^2}}
+f(x_j\,|\,\mu_{j,y}, \sigma) = \frac{1}{\sqrt{2\sigma^2\pi}}e^{-\frac{(x_j-\mu_{j,y})^2}{2\sigma^2}}
 \]
 Show that this na\"ive Bayes classifier has a linear decision boundary.\\ \textit{[Hint: Refer to the notes on the naive Bayes classifier and Linear models in the class website to see how to do this with binary features]}\\
 
@@ -45,11 +45,11 @@ As per the normal probability distribution assumption described above in the que
 
 \begin{equation*}
 \begin{aligned}
-\frac{P(y=1)}{P(y=0)} \displaystyle \prod_{j=0}^{d}  \frac{ \frac{1}{\sqrt{2 \sigma^2 \mu_{1_{j,y}}}} \exp\left(\frac{-\left(x_j - \mu_{1_{j,y}}\right)^2}{2\sigma^2}\right)}{   \frac{1}{\sqrt{2 \sigma^2 \mu_{2_{j,y}}}} \exp\left(\frac{-\left(x_j - \mu_{2_{j,y}}\right)^2}{2\sigma^2}\right)} &\geq 1\\
-\frac{P(y=1)}{P(y=0)} \displaystyle \prod_{j=0}^{d} \sqrt{\frac{\mu_{2_{j,y}}}{\mu_{1_{j,y}}}} \frac{\exp\left(\frac{-\left(x_j - \mu_{1_{j,y}}\right)^2}{2\sigma^2}\right)}{\exp\left(\frac{-\left(x_j - \mu_{2_{j,y}}\right)^2}{2\sigma^2}\right)} &\geq 1\\
-\ln \left( \frac{P(y=1)}{P(y=0)}\right) + \displaystyle \sum_{j=0}^{d} \left( \ln \left( \sqrt{\frac{\mu_{2_{j,y}}}{\mu_{1_{j,y}}}}  \right) - \frac{\left( x_j - \mu_{1_{j,y}} \right)^2}{2\sigma^2} + \frac{\left( x_j - \mu_{2_{j,y}} \right)^2}{2\sigma^2} \right) &\geq 0\\
-\ln \left( \frac{P(y=1)}{P(y=0)}\right) + \displaystyle \sum_{j=0}^{d} \left( \ln \left( \sqrt{\frac{\mu_{2_{j,y}}}{\mu_{1_{j,y}}}}  \right) + \frac{-x_j^2 + 2x_j\mu_{1_{j,y}} - \mu_{1_{j,y}}^2 + x_j^2 - 2x_j\mu_{2_{j,y}} + \mu_{2_{j,y}}^2 }{2\sigma^2} \right) &\geq 0\\
-\ln \left( \frac{P(y=1)}{P(y=0)}\right) + \displaystyle \sum_{j=0}^{d} \left( \ln \left( \sqrt{\frac{\mu_{2_{j,y}}}{\mu_{1_{j,y}}}}  \right) + \frac{\mu_{2_{j,y}}^2  - \mu_{1_{j,y}}^2 + 2(\mu_{1_{j,y}} - \mu_{2_{j,y}})x_j  }{2\sigma^2} \right) &\geq 0\\
+\frac{P(y=1)}{P(y=0)} \displaystyle \prod_{j=0}^{d}  \frac{ \frac{1}{\sqrt{2 \sigma^2 \pi}} \exp\left(\frac{-\left(x_j - \mu_{1_{j,y}}\right)^2}{2\sigma^2}\right)}{   \frac{1}{\sqrt{2 \sigma^2 \pi}} \exp\left(\frac{-\left(x_j - \mu_{2_{j,y}}\right)^2}{2\sigma^2}\right)} &\geq 1\\
+\frac{P(y=1)}{P(y=0)} \displaystyle \prod_{j=0}^{d} \frac{\exp\left(\frac{-\left(x_j - \mu_{1_{j,y}}\right)^2}{2\sigma^2}\right)}{\exp\left(\frac{-\left(x_j - \mu_{2_{j,y}}\right)^2}{2\sigma^2}\right)} &\geq 1\\
+\ln \left( \frac{P(y=1)}{P(y=0)}\right) + \displaystyle \sum_{j=0}^{d} \left(  - \frac{\left( x_j - \mu_{1_{j,y}} \right)^2}{2\sigma^2} + \frac{\left( x_j - \mu_{2_{j,y}} \right)^2}{2\sigma^2} \right) &\geq 0\\
+\ln \left( \frac{P(y=1)}{P(y=0)}\right) + \displaystyle \sum_{j=0}^{d} \left(  \frac{-x_j^2 + 2x_j\mu_{1_{j,y}} - \mu_{1_{j,y}}^2 + x_j^2 - 2x_j\mu_{2_{j,y}} + \mu_{2_{j,y}}^2 }{2\sigma^2} \right) &\geq 0\\
+\ln \left( \frac{P(y=1)}{P(y=0)}\right) + \displaystyle \sum_{j=0}^{d} \left(  \frac{\mu_{2_{j,y}}^2  - \mu_{1_{j,y}}^2 + 2(\mu_{1_{j,y}} - \mu_{2_{j,y}})x_j  }{2\sigma^2} \right) &\geq 0\\
 b + \displaystyle \sum_{j=0}^{d} x_j w_j &\geq 0
 \end{aligned}
 \end{equation*}
@@ -57,7 +57,7 @@ b + \displaystyle \sum_{j=0}^{d} x_j w_j &\geq 0
 where 
 \begin{equation*}
 \begin{aligned}
-b=\ln \left( \frac{P(y=1)}{P(y=0)}\right) + \displaystyle \sum_{j=0}^{d} \left( \ln \left( \sqrt{\frac{\mu_{2_{j,y}}}{\mu_{1_{j,y}}}}  \right) + \frac{\mu_{2_{j,y}}^2  - \mu_{1_{j,y}}^2 }{2\sigma^2} \right) 
+b=\ln \left( \frac{P(y=1)}{P(y=0)}\right) + \displaystyle \sum_{j=0}^{d} \left(  \frac{\mu_{2_{j,y}}^2  - \mu_{1_{j,y}}^2 }{2\sigma^2} \right) 
 \end{aligned}
 \end{equation*}
 
