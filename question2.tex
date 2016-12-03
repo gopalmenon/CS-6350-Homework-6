@@ -100,7 +100,7 @@ P(x_1,x_2 \mid y) = P(x_1 \mid y) P(x_2 \mid y)
 \end{aligned}
 \end{equation*} 
 
-The only cases where the product of two probabilities is the same as the individual probabilities is when both are $0$ or when both are $1$. This means that the above two equations cannot be true for all cases and so $x_1$ and $x_2$ are not conditionally independent given $y$.
+The only cases where the product of two probabilities is the same as the individual probabilities is when both are $0$ or when both are $1$. This means that the above two equations cannot be true for all cases of probability values and so $x_1$ and $x_2$ are not conditionally independent given $y$.
     
   \item \relax[8 points] Let $\ph(x_1 \mid y), \ph(x_2 \mid y)$ and
     $\ph(y)$ represent the learned parameters of a naive Bayes
@@ -113,10 +113,10 @@ The only cases where the product of two probabilities is the same as the individ
       \hline
       $x_1$ & $x_2$ & $\ph(x_1, x_2, y= -1)$ & $\ph(x_1, x_2, y=1)$ & {\bf Prediction: $y' = arg\max_y \ph(x_1, x_2, y)$} \\
       \hline
-      -1    & -1    &                        &                      &                                                   \\
-      -1    & 1     &                        &                      &                                                   \\
-      1     & -1    &                        &                      &                                                   \\
-      1     & 1     &                        &                      &                                                   \\
+      -1    & -1    &    0.64                    & 0.01                     &    -1                                               \\
+      -1    & 1     &     0.16                   &  0.09                    &     -1                                              \\
+      1     & -1    &      0.16                  &   0.09                   &      -1                                             \\
+      1     & 1     &      0.04                  &   0.81                   &       1                                            \\
       \hline
     \end{tabular}
 
