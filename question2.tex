@@ -66,8 +66,12 @@ When $N$ is $\infty$, the values of $\ph(x_1 \mid y)$ and $\ph(y)$ will be the s
 \begin{equation*}
 \begin{aligned}
 P(y' \ne y) &= P(y' \ne y, x_1 = -1) + P(y' \ne y, x_1 = 1)\\
-&= 0.1+ 0.2\\
-&= 0.3
+P(y' \ne y) &= P(y=1, x_1 = -1) + P(y=-1, x_1 = 1)\\
+P(y' \ne y) &= P( x_1 = -1, y=1) + P(x_1 = 1,y=-1)\\
+P(y' \ne y) &= P( x_1 = -1 \mid y=1)P(y=1) + P(x_1 = 1 \mid y=-1)P(y=-1)\\
+&= 0.1 \times 0.9 + 0.2 \times 0.1\\
+&= 0.09+0.02\\
+&=0.11
 \end{aligned}
 \end{equation*} 
 
@@ -123,6 +127,14 @@ The only cases where the product of two probabilities is the same as the individ
   \item \relax[3 points] If the probabilities learned above were used to
     make predictions, what would the error of that classifier be? In
     other words, what is $P(y' \ne y)$?
+
+
+\begin{equation*}
+\begin{aligned}
+P(y' \ne y) = P(y' \ne y, x_1 = -1, x_2=-1) + P(y' \ne y, x_1 = -1, x_2=1) \\+ P(y' \ne y, x_1 = 1, x_2=-1) + P(y' \ne y, x_1 = 1, x_2=1) 
+\end{aligned}
+\end{equation*} 
+
 
   \item \relax[2 points] Do you expect a logistic regression
     classifier to have the same performance as the naive Bayes
