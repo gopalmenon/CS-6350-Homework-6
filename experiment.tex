@@ -42,7 +42,26 @@ The derivative of the first part has already been derived above. The gradient of
 
 \item ~[10 points] Write down the pseudo code for the stochastic gradient algorithm using the gradient from previous part.
 
-
+\begin{minipage}{\linewidth}
+  \begin{algorithm}[H]
+    \caption{Stochastic Gradient Descent Algorithm}\label{AlgSGD}
+    \begin{algorithmic}[1]
+      \Procedure{SGD}{$ \textbf{S}=(\bx_i, y_i), \bx \in \mathbb{R}^n, y \in \{-1, 1\} , T, \gamma_0, \sigma, C$}
+        \State $\bw = \textbf{0} \in \mathbb{R}^n$
+        \State $t = 0$
+	\For{epoch = $1$ to $T$}
+	        \State Shuffle test data
+		\For {$(\bx_i, y_i) \in \textbf{S}$}
+			\State  $\gamma_t  = \frac{\gamma_0}{1+ \frac{\gamma_0 t}{C}}$
+			\State $\bw = \bw -  \gamma_t \left (\frac{-y_i \bx_i}{1+ \exp(y_i\bw^T\bx_i)} + \frac{2\bw}{\sigma^2} \right )$
+			\State $ t = t+1$
+          	\EndFor
+	\EndFor
+      \State return \bw
+      \EndProcedure
+    \end{algorithmic}
+  \end{algorithm}
+\end{minipage}\\\\
 
 \item ~[20 points] Implement your pseduo code as a training algorithm with
   cross-validation on the $\sigma$ parameter.  This parameter
