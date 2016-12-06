@@ -44,15 +44,15 @@ The derivative of the first part has already been derived above. The gradient of
 
 \begin{minipage}{\linewidth}
   \begin{algorithm}[H]
-    \caption{Stochastic Gradient Descent Algorithm}\label{AlgSGD}
+    \caption{Stochastic Gradient Descent }\label{AlgSGD}
     \begin{algorithmic}[1]
-      \Procedure{SGD}{$ \textbf{S}=(\bx_i, y_i), \bx \in \mathbb{R}^n, y \in \{-1, 1\} , T, \gamma_0, \sigma, C$}
+      \Procedure{SGD}{$ \textbf{S}=(\bx_i, y_i), \bx \in \mathbb{R}^n, y \in \{-1, 1\} , T, \gamma_0, \sigma$}
         \State $\bw = \textbf{0} \in \mathbb{R}^n$
         \State $t = 0$
 	\For{epoch = $1$ to $T$}
 	        \State Shuffle test data
 		\For {$(\bx_i, y_i) \in \textbf{S}$}
-			\State  $\gamma_t  = \frac{\gamma_0}{1+ \frac{\gamma_0 t}{C}}$
+			\State  $\gamma_t  = \frac{\gamma_0}{1+ \frac{\gamma_0 t}{\sigma}}$
 			\State $\bw = \bw -  \gamma_t \left (\frac{-y_i \bx_i}{1+ \exp(y_i\bw^T\bx_i)} + \frac{2\bw}{\sigma^2} \right )$
 			\State $ t = t+1$
           	\EndFor
@@ -63,17 +63,14 @@ The derivative of the first part has already been derived above. The gradient of
   \end{algorithm}
 \end{minipage}\\\\
 
-\item ~[20 points] Implement your pseduo code as a training algorithm with
-  cross-validation on the $\sigma$ parameter.  This parameter
-  basically helps trade off between generalizability and model fit.  
+\item ~[20 points] The accuracy obtained after $5$ fold cross validation was $76\%$. A learning rate of $1.0 \times 10^{-6}$ and $\sigma$ of $0.010000000000000002$ was chosen based on the highest average accuracy value of $75\%$ achieved during cross validation. During stochastic gradient descent, $20$ epochs were used during $5$ fold cross validation and this resulted in $20 \times 5 = 100$ epochs. A plot of the negative log likelihood is shown below in figure \ref{logl}.
 
-  Use the Adult data set from the UCI Machine Learning repository which you used in homework 2 to train and evaluate the learner. (For a description of the data, see homework 2.) In your writeup,
-  please report on the accuracy of your system, what value of sigma
-  you chose based on cross validation, how many epochs you chose to
-  run SGD, and a plot of the NEGATIVE log likelihood after each epoch
-  of SGD.
-
-
+\begin{figure}[!t]
+\centering
+\includegraphics[width=5.5in]{NegativeLogLikelihood.png}
+\caption{Plot of the negative log likelihood}
+\label{logl}
+\end{figure}
 
 \end{enumerate}
 
